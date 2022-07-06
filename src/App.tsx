@@ -1,25 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import UserContext from './contexts/AuthContext';
+import AppRouter from './routers/AppRouter';
+
 
 function App() {
+
+  const [isAuth, setIsAuth] = useState<boolean>(false);
+
+  const data = { isAuth, setIsAuth }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider value={data}>
+      <AppRouter />
+    </UserContext.Provider>
   );
 }
 
